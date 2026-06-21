@@ -46,79 +46,81 @@ st.markdown("""
 <style>
 
 /* =========================
-   BASE APP
+   APP BASE
 ========================= */
 .stApp {
     background: transparent;
 }
 
+/* Fondo principal */
+.main {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background-attachment: fixed;
+}
+
 /* =========================
    CONTENIDO PRINCIPAL
-   (solo aquí controlamos texto)
+   (AISLADO → CLAVE)
 ========================= */
-.block-container {
-    background: rgba(255, 255, 255, 0.95);
+div[data-testid="stAppViewContainer"] {
     color: #1a1a1a;
 }
 
-/* texto SOLO dentro del contenido */
+/* Caja blanca */
+.block-container {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 2rem;
+    color: #1a1a1a;
+}
+
+/* SOLO texto dentro del contenido */
 .block-container p,
 .block-container span,
 .block-container div,
 .block-container li,
 .block-container label {
-    color: #1a1a1a;
+    color: #1a1a1a !important;
 }
 
 /* =========================
    TÍTULOS
 ========================= */
-h1 {
-    color: #667eea;
-}
-
-h2, h3 {
-    color: #764ba2;
-}
+h1 { color: #667eea; }
+h2, h3 { color: #764ba2; }
 
 /* =========================
-   MÉTRICAS STREAMLIT (FIABLE)
+   MÉTRICAS (STREAMLIT REAL FIX)
 ========================= */
-div[data-testid="stMetric"] *,
-div[data-testid="stMetricValue"],
-div[data-testid="stMetricLabel"] {
-    color: inherit !important;
+div[data-testid="stMetric"] {
+    color: #1a1a1a !important;
 }
 
-/* forzar solo dentro de contenido claro */
-.block-container div[data-testid="stMetric"] * {
+div[data-testid="stMetric"] * {
     color: #1a1a1a !important;
 }
 
 /* =========================
-   SIDEBAR (SEPARADO COMPLETAMENTE)
-========================= */
-section[data-testid="stSidebar"] {
-    background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
-}
-
-section[data-testid="stSidebar"] * {
-    color: white !important;
-}
-
-/* =========================
-   TABLAS
+   TABLAS STREAMLIT
 ========================= */
 table, th, td {
     color: #1a1a1a !important;
 }
 
 /* =========================
-   INPUTS (selectbox / widgets)
+   INPUTS / SELECTBOX (BASEWEB)
 ========================= */
 div[data-baseweb="select"] *,
 input, textarea {
     color: #1a1a1a !important;
+}
+
+/* =========================
+   SIDEBAR (TOTALMENTE SEPARADO)
+========================= */
+section[data-testid="stSidebar"],
+section[data-testid="stSidebar"] * {
+    color: white !important;
 }
 
 /* =========================
