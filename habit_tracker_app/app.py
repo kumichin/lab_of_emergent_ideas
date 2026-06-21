@@ -44,107 +44,130 @@ st.set_page_config(
 
 st.markdown("""
 <style>
+    /* Tema general */
+    .main {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background-attachment: fixed;
+    }
 
-/* =========================
-   APP BASE
-========================= */
-.stApp {
-    background: transparent;
-}
+    .stApp {
+        background: transparent;
+        color: #1a1a1a;
+    }
 
-/* fondo principal */
-.main {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    background-attachment: fixed;
-}
+    /* Contenedor principal con efecto glassmorphism */
+    .block-container {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 2rem;
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        color: #1a1a1a;
+    }
 
-/* =========================
-   CONTENIDO PRINCIPAL (ISLA CONTROLADA)
-========================= */
-.block-container {
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: 20px;
-    padding: 2rem;
-    color: #1a1a1a;
-}
+    /* Título principal */
+    h1 {
+        color: #667eea;
+        text-align: center;
+        font-weight: 800;
+        font-size: 3rem !important;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        margin-bottom: 0.5rem;
+    }
 
-/* SOLO texto directo (no hijos profundos conflictivos) */
-.block-container p,
-.block-container span,
-.block-container li,
-.block-container label {
-    color: #1a1a1a !important;
-}
+    /* Subtítulos */
+    h2, h3 {
+        color: #764ba2;
+        font-weight: 600;
+    }
 
-/* =========================
-   TÍTULOS
-========================= */
-h1 { color: #667eea; }
-h2, h3 { color: #764ba2; }
+    /* Texto general */
+    p, span, div {
+        color: #1a1a1a;
+    }
 
-/* =========================
-   MÉTRICAS (STREAMLIT FIX REAL)
-========================= */
-div[data-testid="stMetric"] *,
-div[data-testid="stMetricValue"],
-div[data-testid="stMetricLabel"] {
-    color: #1a1a1a !important;
-}
+    /* Tarjetas de métricas */
+    div[data-testid="stMetricValue"] {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #667eea;
+    }
 
-/* =========================
-   TABLAS
-========================= */
-table, th, td {
-    color: #1a1a1a !important;
-}
+    div[data-testid="stMetricLabel"] {
+        color: #1a1a1a;
+    }
 
-/* =========================
-   INPUTS (BASEWEB)
-========================= */
-div[data-baseweb="select"] *,
-input, textarea {
-    color: #1a1a1a !important;
-}
+    /* Botones */
+    .stButton > button {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border: none;
+        border-radius: 10px;
+        padding: 0.5rem 2rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px 0 rgba(102, 126, 234, 0.4);
+    }
 
-/* =========================
-   SIDEBAR (SEPARADO TOTAL)
-========================= */
-section[data-testid="stSidebar"],
-section[data-testid="stSidebar"] * {
-    color: white !important;
-}
+    .stButton > button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px 0 rgba(102, 126, 234, 0.6);
+    }
 
-/* =========================
-   ALERTAS (CONTROL TOTAL)
-========================= */
-.alerta-critica *,
-.alerta-positiva *,
-.alerta-info * {
-    color: white !important;
-}
+    /* File uploader */
+    .stFileUploader {
+        background: rgba(102, 126, 234, 0.05);
+        border-radius: 15px;
+        padding: 1.5rem;
+        border: 2px dashed #667eea;
+        color: #1a1a1a;
+    }
 
-.alerta-advertencia,
-.alerta-advertencia * {
-    color: #1a1a1a !important;
-}
+    /* Alertas personalizadas */
+    .alerta-critica {
+        background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+        color: white;
+    }
 
-/* =========================
-   🔥 FIX FINAL PARA TEXTO “PERDIDO”
-   (esto arregla los casos raros)
-========================= */
+    .alerta-advertencia {
+        background: linear-gradient(135deg, #ffd93d 0%, #f6c23e 100%);
+        color: #1a1a1a;
+    }
 
-/* fuerza SOLO textos dentro de bloques de Streamlit */
-div[data-testid="stAppViewContainer"] p,
-div[data-testid="stAppViewContainer"] span,
-div[data-testid="stAppViewContainer"] div {
-    color: #1a1a1a;
-}
+    .alerta-positiva {
+        background: linear-gradient(135deg, #51cf66 0%, #37b24d 100%);
+        color: white;
+    }
 
-/* pero sin romper sidebar */
-section[data-testid="stSidebar"] * {
-    color: white !important;
-}
+    .alerta-info {
+        background: linear-gradient(135deg, #4dabf7 0%, #228be6 100%);
+        color: white;
+    }
 
+    /* Sidebar */
+    section[data-testid="stSidebar"] {
+        background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+    }
+
+    section[data-testid="stSidebar"] * {
+        color: white;
+    }
+
+    /* Dataframe */
+    .dataframe {
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    /* Animación de carga */
+    @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.5; }
+    }
+
+    .loading {
+        animation: pulse 1.5s ease-in-out infinite;
+    }
 </style>
 """, unsafe_allow_html=True)
 
