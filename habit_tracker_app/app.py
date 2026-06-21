@@ -48,19 +48,31 @@ st.markdown("""
     .main {
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         background-attachment: fixed;
+        color: #1a1a1a;
     }
 
     .stApp {
         background: transparent;
+        color: #1a1a1a;
     }
 
-    /* Contenedor principal con efecto glassmorphism */
+    /* Contenedor principal */
     .block-container {
         background: rgba(255, 255, 255, 0.95);
         backdrop-filter: blur(10px);
         border-radius: 20px;
         padding: 2rem;
         box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        color: #1a1a1a;
+    }
+
+    /* Textos base Streamlit (IMPORTANTE) */
+    p, span, label, div, li {
+        color: #1a1a1a;
+    }
+
+    /* Markdown fuerza lectura */
+    .stMarkdown, .stMarkdown * {
         color: #1a1a1a;
     }
 
@@ -80,11 +92,11 @@ st.markdown("""
         font-weight: 600;
     }
 
-    /* Tarjetas de métricas */
-    div[data-testid="stMetricValue"] {
-        font-size: 2rem;
-        font-weight: 700;
-        color: #667eea;
+    /* MÉTRICAS (Streamlit las renderiza con spans internos) */
+    div[data-testid="stMetric"] *,
+    div[data-testid="stMetricValue"],
+    div[data-testid="stMetricLabel"] {
+        color: #1a1a1a !important;
     }
 
     /* Botones */
@@ -95,13 +107,6 @@ st.markdown("""
         border-radius: 10px;
         padding: 0.5rem 2rem;
         font-weight: 600;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 15px 0 rgba(102, 126, 234, 0.4);
-    }
-
-    .stButton > button:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px 0 rgba(102, 126, 234, 0.6);
     }
 
     /* File uploader */
@@ -113,92 +118,41 @@ st.markdown("""
         color: #1a1a1a;
     }
 
-    /* Alertas personalizadas */
-    .alerta-critica {
-        background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+    /* ALERTAS */
+    .alerta-critica, .alerta-positiva, .alerta-info {
         color: white;
-        padding: 1rem;
-        border-radius: 10px;
-        margin: 0.5rem 0;
-        box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
     }
 
-    .alerta-advertencia {
-        background: linear-gradient(135deg, #ffd93d 0%, #f6c23e 100%);
-        color: #1a1a1a;
-        padding: 1rem;
-        border-radius: 10px;
-        margin: 0.5rem 0;
-        box-shadow: 0 4px 15px rgba(255, 217, 61, 0.3);
-    }
-
-    .alerta-positiva {
-        background: linear-gradient(135deg, #51cf66 0%, #37b24d 100%);
-        color: white;
-        padding: 1rem;
-        border-radius: 10px;
-        margin: 0.5rem 0;
-        box-shadow: 0 4px 15px rgba(81, 207, 102, 0.3);
-    }
-
-    .alerta-info {
-        background: linear-gradient(135deg, #4dabf7 0%, #228be6 100%);
-        color: white;
-        padding: 1rem;
-        border-radius: 10px;
-        margin: 0.5rem 0;
-        box-shadow: 0 4px 15px rgba(77, 171, 247, 0.3);
-    }
-
-    /* Sidebar */
-    section[data-testid="stSidebar"] {
-        background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
-    }
-
-    section[data-testid="stSidebar"] * {
-        color: white !important;
-    }
-
-    /* Dataframe */
-    .dataframe {
-        border-radius: 10px;
-        overflow: hidden;
-        color: #1a1a1a;
-    }
-
-    /* Animación de carga */
-    @keyframes pulse {
-        0%, 100% { opacity: 1; }
-        50% { opacity: 0.5; }
-    }
-
-    .loading {
-        animation: pulse 1.5s ease-in-out infinite;
-    }
-
-    /* ============================= */
-    /* CONTROL DE CONTRASTE GLOBAL */
-    /* ============================= */
-
-    /* Texto general en contenido principal */
-    .main, .main * {
-        color: #1a1a1a;
-    }
-
-    /* Mantener texto blanco en sidebar */
-    section[data-testid="stSidebar"],
-    section[data-testid="stSidebar"] * {
-        color: white !important;
-    }
-
-    /* Mantener contraste en alertas */
     .alerta-critica *,
     .alerta-positiva *,
     .alerta-info * {
         color: white !important;
     }
 
+    .alerta-advertencia,
     .alerta-advertencia * {
+        color: #1a1a1a !important;
+    }
+
+    /* SIDEBAR (FORZADO REAL) */
+    section[data-testid="stSidebar"],
+    section[data-testid="stSidebar"] * {
+        color: white !important;
+    }
+
+    /* DATAFRAME (Streamlit lo renderiza como table HTML) */
+    table, th, td {
+        color: #1a1a1a !important;
+    }
+
+    /* Selectbox / inputs (IMPORTANTE para blancos invisibles) */
+    div[data-baseweb="select"] *,
+    input, textarea {
+        color: #1a1a1a !important;
+    }
+
+    /* EXPANDERS */
+    details, summary {
         color: #1a1a1a !important;
     }
 </style>
