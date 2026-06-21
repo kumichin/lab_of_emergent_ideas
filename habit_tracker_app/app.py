@@ -44,85 +44,84 @@ st.set_page_config(
 
 st.markdown("""
 <style>
-    /* Tema general */
+    /* =========================
+       BASE APP
+    ========================== */
+    .stApp {
+        background: transparent;
+        color: #1a1a1a;
+    }
+
     .main {
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         background-attachment: fixed;
         color: #1a1a1a;
     }
 
-    .stApp {
-        background: transparent;
-        color: #1a1a1a;
-    }
-
-    /* Contenedor principal */
+    /* =========================
+       CONTENIDO PRINCIPAL
+    ========================== */
     .block-container {
         background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(10px);
         border-radius: 20px;
         padding: 2rem;
-        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
         color: #1a1a1a;
     }
 
-    /* Textos base Streamlit (IMPORTANTE) */
-    p, span, label, div, li {
+    /* SOLO texto del contenido, NO global */
+    .block-container p,
+    .block-container span,
+    .block-container div,
+    .block-container li {
         color: #1a1a1a;
     }
 
-    /* Markdown fuerza lectura */
-    .stMarkdown, .stMarkdown * {
-        color: #1a1a1a;
-    }
-
-    /* Título principal */
+    /* =========================
+       TÍTULOS
+    ========================== */
     h1 {
         color: #667eea;
-        text-align: center;
-        font-weight: 800;
-        font-size: 3rem !important;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-        margin-bottom: 0.5rem;
     }
 
-    /* Subtítulos */
     h2, h3 {
         color: #764ba2;
-        font-weight: 600;
     }
 
-    /* MÉTRICAS (Streamlit las renderiza con spans internos) */
+    /* =========================
+       MÉTRICAS (FIX REAL STREAMLIT)
+    ========================== */
     div[data-testid="stMetric"] *,
     div[data-testid="stMetricValue"],
     div[data-testid="stMetricLabel"] {
         color: #1a1a1a !important;
     }
 
-    /* Botones */
-    .stButton > button {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        color: white;
-        border: none;
-        border-radius: 10px;
-        padding: 0.5rem 2rem;
-        font-weight: 600;
+    /* =========================
+       SIDEBAR (AISLADO)
+    ========================== */
+    section[data-testid="stSidebar"],
+    section[data-testid="stSidebar"] * {
+        color: white !important;
     }
 
-    /* File uploader */
-    .stFileUploader {
-        background: rgba(102, 126, 234, 0.05);
-        border-radius: 15px;
-        padding: 1.5rem;
-        border: 2px dashed #667eea;
-        color: #1a1a1a;
+    /* =========================
+       TABLAS
+    ========================== */
+    table, th, td {
+        color: #1a1a1a !important;
     }
 
-    /* ALERTAS */
-    .alerta-critica, .alerta-positiva, .alerta-info {
-        color: white;
+    /* =========================
+       INPUTS (selectbox, etc.)
+    ========================== */
+    div[data-baseweb="select"] *,
+    input, textarea {
+        color: #1a1a1a !important;
     }
 
+    /* =========================
+       ALERTAS (AISLADAS)
+    ========================== */
     .alerta-critica *,
     .alerta-positiva *,
     .alerta-info * {
@@ -131,28 +130,6 @@ st.markdown("""
 
     .alerta-advertencia,
     .alerta-advertencia * {
-        color: #1a1a1a !important;
-    }
-
-    /* SIDEBAR (FORZADO REAL) */
-    section[data-testid="stSidebar"],
-    section[data-testid="stSidebar"] * {
-        color: white !important;
-    }
-
-    /* DATAFRAME (Streamlit lo renderiza como table HTML) */
-    table, th, td {
-        color: #1a1a1a !important;
-    }
-
-    /* Selectbox / inputs (IMPORTANTE para blancos invisibles) */
-    div[data-baseweb="select"] *,
-    input, textarea {
-        color: #1a1a1a !important;
-    }
-
-    /* EXPANDERS */
-    details, summary {
         color: #1a1a1a !important;
     }
 </style>
