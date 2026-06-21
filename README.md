@@ -65,14 +65,15 @@ Cada proyecto es una **exploración práctica** —a veces experimental, a veces
 
 Cada carpeta representa un mini-proyecto independiente:
 
-```text
-📂 lab-of-emergent-ideas/
-├── [habit_tracker_app](https://github.com/kumichin/lab_of_emergent_ideas/tree/main/habit_tracker_app)
-├── project_02/
-├── project_03/
-├── ...
-└── COPYRIGHT_NOTICE
-```
+
+### 📁 Core Projects
+
+- 📊 **Habit Tracker App** → análisis de hábitos con Streamlit  
+      [Link](https://github.com/kumichin/lab_of_emergent_ideas/tree/main/habit_tracker_app)
+
+### 📁 Experiments
+- 🌙🐿️
+
 
 
 ## Cada proyecto incluye:
