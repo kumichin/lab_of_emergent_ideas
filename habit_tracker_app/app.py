@@ -61,6 +61,7 @@ st.markdown("""
         border-radius: 20px;
         padding: 2rem;
         box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        color: #1a1a1a;
     }
 
     /* Título principal */
@@ -109,6 +110,7 @@ st.markdown("""
         border-radius: 15px;
         padding: 1.5rem;
         border: 2px dashed #667eea;
+        color: #1a1a1a;
     }
 
     /* Alertas personalizadas */
@@ -123,7 +125,7 @@ st.markdown("""
 
     .alerta-advertencia {
         background: linear-gradient(135deg, #ffd93d 0%, #f6c23e 100%);
-        color: #333;
+        color: #1a1a1a;
         padding: 1rem;
         border-radius: 10px;
         margin: 0.5rem 0;
@@ -161,6 +163,7 @@ st.markdown("""
     .dataframe {
         border-radius: 10px;
         overflow: hidden;
+        color: #1a1a1a;
     }
 
     /* Animación de carga */
@@ -173,15 +176,31 @@ st.markdown("""
         animation: pulse 1.5s ease-in-out infinite;
     }
 
-    /* FORZAR TEXTO LEGIBLE EN TODA LA APP */
-.stApp, .stApp * {
-    color: #1a1a1a !important;
-}
+    /* ============================= */
+    /* CONTROL DE CONTRASTE GLOBAL */
+    /* ============================= */
 
-.stMarkdown, p, span, div {
-    color: #1a1a1a !important;
-}
+    /* Texto general en contenido principal */
+    .main, .main * {
+        color: #1a1a1a;
+    }
 
+    /* Mantener texto blanco en sidebar */
+    section[data-testid="stSidebar"],
+    section[data-testid="stSidebar"] * {
+        color: white !important;
+    }
+
+    /* Mantener contraste en alertas */
+    .alerta-critica *,
+    .alerta-positiva *,
+    .alerta-info * {
+        color: white !important;
+    }
+
+    .alerta-advertencia * {
+        color: #1a1a1a !important;
+    }
 </style>
 """, unsafe_allow_html=True)
 
