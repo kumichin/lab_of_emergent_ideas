@@ -67,7 +67,7 @@ Cada carpeta representa un mini-proyecto independiente:
 
 ```text
 📂 lab-of-emergent-ideas/
-├── project_01/
+├── [habit_tracker_app](https://github.com/kumichin/lab_of_emergent_ideas/tree/main/habit_tracker_app)
 ├── project_02/
 ├── project_03/
 ├── ...
