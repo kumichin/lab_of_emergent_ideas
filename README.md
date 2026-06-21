@@ -69,7 +69,7 @@ Cada carpeta representa un mini-proyecto independiente:
 ### 📁 Core Projects
 
 - 📊 **Habit Tracker App** → análisis de hábitos con Streamlit  
-       - [Enlace al proyecto](https://github.com/kumichin/lab_of_emergent_ideas/tree/main/habit_tracker_app)
+       - [Ver proyecto](https://github.com/kumichin/lab_of_emergent_ideas/tree/main/habit_tracker_app)
 
 ### 📁 Experiments
 - 🌙🐿️
