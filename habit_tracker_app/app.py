@@ -172,6 +172,16 @@ st.markdown("""
     .loading {
         animation: pulse 1.5s ease-in-out infinite;
     }
+
+    /* FORZAR TEXTO LEGIBLE EN TODA LA APP */
+.stApp, .stApp * {
+    color: #1a1a1a !important;
+}
+
+.stMarkdown, p, span, div {
+    color: #1a1a1a !important;
+}
+
 </style>
 """, unsafe_allow_html=True)
 
