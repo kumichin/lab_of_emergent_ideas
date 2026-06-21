@@ -52,21 +52,15 @@ st.markdown("""
     background: transparent;
 }
 
-/* Fondo principal */
+/* fondo principal */
 .main {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     background-attachment: fixed;
 }
 
 /* =========================
-   CONTENIDO PRINCIPAL
-   (AISLADO → CLAVE)
+   CONTENIDO PRINCIPAL (ISLA CONTROLADA)
 ========================= */
-div[data-testid="stAppViewContainer"] {
-    color: #1a1a1a;
-}
-
-/* Caja blanca */
 .block-container {
     background: rgba(255, 255, 255, 0.95);
     border-radius: 20px;
@@ -74,10 +68,9 @@ div[data-testid="stAppViewContainer"] {
     color: #1a1a1a;
 }
 
-/* SOLO texto dentro del contenido */
+/* SOLO texto directo (no hijos profundos conflictivos) */
 .block-container p,
 .block-container span,
-.block-container div,
 .block-container li,
 .block-container label {
     color: #1a1a1a !important;
@@ -90,25 +83,23 @@ h1 { color: #667eea; }
 h2, h3 { color: #764ba2; }
 
 /* =========================
-   MÉTRICAS (STREAMLIT REAL FIX)
+   MÉTRICAS (STREAMLIT FIX REAL)
 ========================= */
-div[data-testid="stMetric"] {
-    color: #1a1a1a !important;
-}
-
-div[data-testid="stMetric"] * {
+div[data-testid="stMetric"] *,
+div[data-testid="stMetricValue"],
+div[data-testid="stMetricLabel"] {
     color: #1a1a1a !important;
 }
 
 /* =========================
-   TABLAS STREAMLIT
+   TABLAS
 ========================= */
 table, th, td {
     color: #1a1a1a !important;
 }
 
 /* =========================
-   INPUTS / SELECTBOX (BASEWEB)
+   INPUTS (BASEWEB)
 ========================= */
 div[data-baseweb="select"] *,
 input, textarea {
@@ -116,7 +107,7 @@ input, textarea {
 }
 
 /* =========================
-   SIDEBAR (TOTALMENTE SEPARADO)
+   SIDEBAR (SEPARADO TOTAL)
 ========================= */
 section[data-testid="stSidebar"],
 section[data-testid="stSidebar"] * {
@@ -124,7 +115,7 @@ section[data-testid="stSidebar"] * {
 }
 
 /* =========================
-   ALERTAS
+   ALERTAS (CONTROL TOTAL)
 ========================= */
 .alerta-critica *,
 .alerta-positiva *,
@@ -135,6 +126,23 @@ section[data-testid="stSidebar"] * {
 .alerta-advertencia,
 .alerta-advertencia * {
     color: #1a1a1a !important;
+}
+
+/* =========================
+   🔥 FIX FINAL PARA TEXTO “PERDIDO”
+   (esto arregla los casos raros)
+========================= */
+
+/* fuerza SOLO textos dentro de bloques de Streamlit */
+div[data-testid="stAppViewContainer"] p,
+div[data-testid="stAppViewContainer"] span,
+div[data-testid="stAppViewContainer"] div {
+    color: #1a1a1a;
+}
+
+/* pero sin romper sidebar */
+section[data-testid="stSidebar"] * {
+    color: white !important;
 }
 
 </style>
