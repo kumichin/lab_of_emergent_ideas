@@ -76,14 +76,6 @@ Cada carpeta representa un mini-proyecto independiente:
 
 
 
-## Cada proyecto incluye:
-
--  Código limpio y comentado solo donde es necesario.
-  
-- Visualizaciones o resultados relevantes, solo donde sea necesario.
-  
-- Explicación breve del propósito o insight obtenido, según proyecto.
-
 
 ## 🧭 Enfoque y filosofía
 ### Cada proyecto tiene uno o varios de estos objetivos: 
