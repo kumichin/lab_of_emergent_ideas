@@ -44,94 +44,97 @@ st.set_page_config(
 
 st.markdown("""
 <style>
-    /* =========================
-       BASE APP
-    ========================== */
-    .stApp {
-        background: transparent;
-        color: #1a1a1a;
-    }
 
-    .main {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        background-attachment: fixed;
-        color: #1a1a1a;
-    }
+/* =========================
+   BASE APP
+========================= */
+.stApp {
+    background: transparent;
+}
 
-    /* =========================
-       CONTENIDO PRINCIPAL
-    ========================== */
-    .block-container {
-        background: rgba(255, 255, 255, 0.95);
-        border-radius: 20px;
-        padding: 2rem;
-        color: #1a1a1a;
-    }
+/* =========================
+   CONTENIDO PRINCIPAL
+   (solo aquí controlamos texto)
+========================= */
+.block-container {
+    background: rgba(255, 255, 255, 0.95);
+    color: #1a1a1a;
+}
 
-    /* SOLO texto del contenido, NO global */
-    .block-container p,
-    .block-container span,
-    .block-container div,
-    .block-container li {
-        color: #1a1a1a;
-    }
+/* texto SOLO dentro del contenido */
+.block-container p,
+.block-container span,
+.block-container div,
+.block-container li,
+.block-container label {
+    color: #1a1a1a;
+}
 
-    /* =========================
-       TÍTULOS
-    ========================== */
-    h1 {
-        color: #667eea;
-    }
+/* =========================
+   TÍTULOS
+========================= */
+h1 {
+    color: #667eea;
+}
 
-    h2, h3 {
-        color: #764ba2;
-    }
+h2, h3 {
+    color: #764ba2;
+}
 
-    /* =========================
-       MÉTRICAS (FIX REAL STREAMLIT)
-    ========================== */
-    div[data-testid="stMetric"] *,
-    div[data-testid="stMetricValue"],
-    div[data-testid="stMetricLabel"] {
-        color: #1a1a1a !important;
-    }
+/* =========================
+   MÉTRICAS STREAMLIT (FIABLE)
+========================= */
+div[data-testid="stMetric"] *,
+div[data-testid="stMetricValue"],
+div[data-testid="stMetricLabel"] {
+    color: inherit !important;
+}
 
-    /* =========================
-       SIDEBAR (AISLADO)
-    ========================== */
-    section[data-testid="stSidebar"],
-    section[data-testid="stSidebar"] * {
-        color: white !important;
-    }
+/* forzar solo dentro de contenido claro */
+.block-container div[data-testid="stMetric"] * {
+    color: #1a1a1a !important;
+}
 
-    /* =========================
-       TABLAS
-    ========================== */
-    table, th, td {
-        color: #1a1a1a !important;
-    }
+/* =========================
+   SIDEBAR (SEPARADO COMPLETAMENTE)
+========================= */
+section[data-testid="stSidebar"] {
+    background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+}
 
-    /* =========================
-       INPUTS (selectbox, etc.)
-    ========================== */
-    div[data-baseweb="select"] *,
-    input, textarea {
-        color: #1a1a1a !important;
-    }
+section[data-testid="stSidebar"] * {
+    color: white !important;
+}
 
-    /* =========================
-       ALERTAS (AISLADAS)
-    ========================== */
-    .alerta-critica *,
-    .alerta-positiva *,
-    .alerta-info * {
-        color: white !important;
-    }
+/* =========================
+   TABLAS
+========================= */
+table, th, td {
+    color: #1a1a1a !important;
+}
 
-    .alerta-advertencia,
-    .alerta-advertencia * {
-        color: #1a1a1a !important;
-    }
+/* =========================
+   INPUTS (selectbox / widgets)
+========================= */
+div[data-baseweb="select"] *,
+input, textarea {
+    color: #1a1a1a !important;
+}
+
+/* =========================
+   ALERTAS
+========================= */
+.alerta-critica *,
+.alerta-positiva *,
+.alerta-info * {
+    color: white !important;
+}
+
+.alerta-advertencia,
+.alerta-advertencia * {
+    color: #1a1a1a !important;
+}
+
 </style>
 """, unsafe_allow_html=True)
 
